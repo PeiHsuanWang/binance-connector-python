@@ -270,6 +270,8 @@ class Spot(API):
     from binance.spot._portfolio_margin import get_auto_repay_futures_status
     from binance.spot._portfolio_margin import repay_futures_negative_balance
     from binance.spot._portfolio_margin import fund_collection_by_asset
+    from binance.spot._portfolio_margin import mint_BFUSD
+    from binance.spot._portfolio_margin import redeem_BFUSD
 
     # Simple Earn
     from binance.spot._simple_earn import get_simple_earn_flexible_product_list

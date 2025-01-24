@@ -307,3 +307,51 @@ def fund_collection_by_asset(self, asset: str, **kwargs):
     params = {"asset": asset, **kwargs}
     url_path = "/sapi/v1/portfolio/asset-collection"
     return self.sign_request("POST", url_path, params)
+
+def mint_BFUSD(self, fromAsset: str, targetAsset: str, amount: float, **kwargs):
+    """ Mint BFUSD for Portfolio Margin (TRADE)
+
+    Mint BFUSD for all types of Portfolio Margin account
+
+    Weight(IP): 1500
+
+    POST /sapi/v1/portfolio/mint
+
+    https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Mint-BFUSD-Portfolio-Margin
+
+    Args:
+        fromAsset (str): USDT only
+        targetAsset (str): BFUSD only
+        amount (float)
+    Keyword Args:
+        recvWindow (int, optional)
+    """
+    check_required_parameters([[fromAsset, "fromAsset"], [targetAsset, "targetAsset"], [amount, "amount"]])
+
+    params = {"fromAsset": fromAsset, "targetAsset": targetAsset, "amount": amount, **kwargs}
+    url_path = "/sapi/v1/portfolio/mint"
+    return self.sign_request("POST", url_path, params)
+
+def redeem_BFUSD(self, fromAsset: str, targetAsset: str, amount: float, **kwargs):
+    """ Redeem BFUSD for Portfolio Margin (TRADE)
+
+    Redeem BFUSD for all types of Portfolio Margin account
+
+    Weight(IP): 1500
+
+    POST /sapi/v1/portfolio/redeem
+
+    https://developers.binance.com/docs/derivatives/portfolio-margin-pro/account/Redeem-BFUSD-Portfolio-Margin
+
+    Args:
+        fromAsset (str): BFUSD only
+        targetAsset (str): USDT only
+        amount (float)
+    Keyword Args:
+        recvWindow (int, optional)
+    """
+    check_required_parameters([[fromAsset, "fromAsset"], [targetAsset, "targetAsset"], [amount, "amount"]])
+
+    params = {"fromAsset": fromAsset, "targetAsset": targetAsset, "amount": amount, **kwargs}
+    url_path = "/sapi/v1/portfolio/redeem"
+    return self.sign_request("POST", url_path, params)
