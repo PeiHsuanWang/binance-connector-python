@@ -157,7 +157,8 @@ def get_portfolio_margin_account_balance(self, **kwargs):
         asset (str, optional)
         recvWindow (int, optional): The value cannot be greater than 60000
     """
-    url_path = "/sapi/v1/portfolio/balance"
+    # url_path = "/sapi/v1/portfolio/balance"
+    url_path = "/papi/v1/balance"
     return self.sign_request("GET", url_path, {**kwargs})
 
 

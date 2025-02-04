@@ -127,7 +127,9 @@ def new_margin_order(self, symbol: str, side: str, type: str, **kwargs):
     )
 
     payload = {"symbol": symbol, "side": side, "type": type, **kwargs}
-    return self.sign_request("POST", "/sapi/v1/margin/order", payload)
+    # base_url = "/sapi/v1/margin/order" # for cross margin account
+    base_url = "/papi/v1/margin/order" # for portfolio margin account
+    return self.sign_request("POST", base_url, payload)
 
 
 def cancel_margin_order(self, symbol: str, **kwargs):
@@ -150,7 +152,9 @@ def cancel_margin_order(self, symbol: str, **kwargs):
     """
     check_required_parameter(symbol, "symbol")
     payload = {"symbol": symbol, **kwargs}
-    return self.sign_request("DELETE", "/sapi/v1/margin/order", payload)
+    # base_url = "/sapi/v1/margin/order" # for cross margin account
+    base_url = "/papi/v1/margin/order" # for portfolio margin account
+    return self.sign_request("DELETE", base_url, payload)
 
 
 def margin_transfer_history(self, asset: str, **kwargs):
@@ -273,7 +277,9 @@ def margin_order(self, symbol: str, **kwargs):
 
     check_required_parameter(symbol, "symbol")
     payload = {"symbol": symbol, **kwargs}
-    return self.sign_request("GET", "/sapi/v1/margin/order", payload)
+    # base_url = "/sapi/v1/margin/order" # for portfolio margin account
+    base_url = "/papi/v1/margin/order" # for portfolio margin account
+    return self.sign_request("GET", base_url, payload)
 
 
 def margin_open_orders(self, **kwargs):
